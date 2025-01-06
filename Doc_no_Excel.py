@@ -13,4 +13,4 @@ end = int(input('Enter end number: '))
 dataframe = pd.DataFrame({'Product number': generate_text_range(start, end, prefix)}) #Create dataframe
 writer = pd.ExcelWriter(f'Product number of {prefix}.xlsx', engine='xlsxwriter') #Create excel file
 dataframe.to_excel(writer, sheet_name='Sheet1', index=False) #Write dataframe to excel file
-writer.save() #Save excel file
+writer.close() #Save excel file
