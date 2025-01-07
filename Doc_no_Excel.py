@@ -7,8 +7,15 @@ def generate_text_range(start, end, prefix):
 
 station = input('Enter station name: ')
 prefix = input('Enter product number prefix: ')
-start = int(input('Enter start number: '))
-end = int(input('Enter end number: '))
+try:
+    start = int(input('Enter start number: '))
+    end = int(input('Enter end number: '))
+    if end < start:
+        raise ValueError("End number must be greater than or equal to start number")
+except ValueError as e:
+    print(f"Invalid input: {e}")
+    exit()
+
 
 #Part of creating excel file
 dataframe = pd.DataFrame({'Product number': generate_text_range(start, end, prefix)}) #Create dataframe
